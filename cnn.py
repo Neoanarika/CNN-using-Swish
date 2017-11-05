@@ -85,6 +85,7 @@ tf.summary.scalar('grad',tf.reduce_mean(grad[0][0]))
 tf.summary.scalar('W1',tf.reduce_mean(grad[0][1]))
 tf.summary.histogram('grad',tf.reduce_mean(grad[0][0]))
 tf.summary.histogram('W1',tf.reduce_mean(grad[0][1]))
+tf.summary.histogram('beta1',tf.reduce_mean(beta1))
 
 train = optimizer.minimize(loss)
 
