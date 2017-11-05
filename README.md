@@ -12,7 +12,7 @@ in tensorflow
 
 ```
 x1 = tf.nn.conv2d(X, W1, strides=[1,1,1,1], padding='SAME') + B1
-Y1 = x1*tf.nn.sigmoid(x1)# output is 28x28
+Y1 = x1*tf.nn.sigmoid(beta1*x1)# output is 28x28
 ```
 
 # Reference 
