@@ -15,5 +15,11 @@ x1 = tf.nn.conv2d(X, W1, strides=[1,1,1,1], padding='SAME') + B1
 Y1 = x1*tf.nn.sigmoid(beta1*x1)# output is 28x28
 ```
 
+# Results 
+
+![alt text](https://github.com/Neoanarika/CNN-using-Swish/blob/master/media/loss_swish.png)
+
+During the inital phase of training the loss function remains , on average, the same this shows that swish suffers from poor intialisation during training, at least when using initally normal distributed weights with std_dev =0.1. 
+
 # Reference 
 1. Searching for Activation Functions https://arxiv.org/abs/1710.05941
