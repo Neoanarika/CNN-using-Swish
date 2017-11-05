@@ -17,7 +17,7 @@ Y1 = x1*tf.nn.sigmoid(beta1*x1)# output is 28x28
 
 # Results 
 
-![alt text](https://github.com/Neoanarika/CNN-using-Swish/blob/master/media/loss_swish.png)
+![alt text](https://github.com/Neoanarika/CNN-using-Swish/blob/master/media/loss_swish2.png)
 
 During the inital phase of training the loss function remains , on average, the same this shows that swish suffers from poor intialisation during training, at least when using initally normal distributed weights with std_dev =0.1. 
 
