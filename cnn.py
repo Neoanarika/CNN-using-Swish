@@ -39,10 +39,13 @@ L4 = 200 # fully connected neurons
 
 W1 = tf.Variable(tf.truncated_normal([5,5,1,L1], stddev=0.1))
 B1 = tf.Variable(tf.zeros([L1]))
+beta1 =  tf.Variable(tf.truncated_normal([1], stddev=0.1))
 W2 = tf.Variable(tf.truncated_normal([5,5,L1,L2], stddev=0.1))
 B2 = tf.Variable(tf.zeros([L2]))
+beta2 =  tf.Variable(tf.truncated_normal([1], stddev=0.1))
 W3 = tf.Variable(tf.truncated_normal([4,4,L2,L3], stddev=0.1))
 B3 = tf.Variable(tf.zeros([L3]))
+beta3 =  tf.Variable(tf.truncated_normal([1], stddev=0.1))
 W4 = tf.Variable(tf.truncated_normal([7*7*L3,L4], stddev=0.1))
 B4 = tf.Variable(tf.zeros([L4]))
 W5 = tf.Variable(tf.truncated_normal([L4, 10], stddev=0.1))
@@ -51,13 +54,13 @@ B5 = tf.Variable(tf.zeros([10]))
 
 # Step 2: Setup Model
 x1 = tf.nn.conv2d(X, W1, strides=[1,1,1,1], padding='SAME') + B1
-Y1 = x1*tf.nn.sigmoid(x1)# output is 28x28
+Y1 = x1*tf.nn.sigmoid(beta1*x1)# output is 28x28
 x2 = tf.nn.conv2d(Y1, W2, strides=[1,1,1,1], padding='SAME') + B2
-Y2 = x2*tf.nn.sigmoid(x2)
+Y2 = x2*tf.nn.sigmoid(beta2*x2)
 Y2 = tf.nn.max_pool(Y2, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME') # output is 14x14
 Y2= tf.nn.dropout(Y2, pkeep)
 x3 = tf.nn.conv2d(Y2, W3, strides=[1,1,1,1], padding='SAME') + B3
-Y3 = x3*tf.nn.sigmoid(x3)
+Y3 = x3*tf.nn.sigmoid(beta3*x3)
 Y3 = tf.nn.max_pool(Y3, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME') # output is 7x7
 Y3= tf.nn.dropout(Y3, pkeep)
 
@@ -77,7 +80,7 @@ tf.summary.scalar('loss',loss)
 optimizer = tf.train.GradientDescentOptimizer(learning_rate)
 #optimizer = tf.train.AdamOptimizer()
 grad = optimizer.compute_gradients(loss)
-
+tf.summary.scalar('beta1',tf.reduce_mean(beta1))
 tf.summary.scalar('grad',tf.reduce_mean(grad[0][0]))
 tf.summary.scalar('W1',tf.reduce_mean(grad[0][1]))
 tf.summary.histogram('grad',tf.reduce_mean(grad[0][0]))
