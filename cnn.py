@@ -37,18 +37,18 @@ L2 = 8 # second convolutional filters
 L3 = 12 # third convolutional filters
 L4 = 200 # fully connected neurons
 
-W1 = tf.Variable(tf.truncated_normal([5,5,1,L1], stddev=0.1))
+W1 = tf.Variable(tf.truncated_normal([5,5,1,L1], stddev=0.08))
 B1 = tf.Variable(tf.zeros([L1]))
-beta1 =  tf.Variable(tf.truncated_normal([1], stddev=0.1))
-W2 = tf.Variable(tf.truncated_normal([5,5,L1,L2], stddev=0.1))
+beta1 =  tf.Variable(tf.truncated_normal([1], stddev=0.08))
+W2 = tf.Variable(tf.truncated_normal([5,5,L1,L2], stddev=0.08))
 B2 = tf.Variable(tf.zeros([L2]))
-beta2 =  tf.Variable(tf.truncated_normal([1], stddev=0.1))
-W3 = tf.Variable(tf.truncated_normal([4,4,L2,L3], stddev=0.1))
+beta2 =  tf.Variable(tf.truncated_normal([1], stddev=0.08))
+W3 = tf.Variable(tf.truncated_normal([4,4,L2,L3], stddev=0.08))
 B3 = tf.Variable(tf.zeros([L3]))
-beta3 =  tf.Variable(tf.truncated_normal([1], stddev=0.1))
-W4 = tf.Variable(tf.truncated_normal([7*7*L3,L4], stddev=0.1))
+beta3 =  tf.Variable(tf.truncated_normal([1], stddev=0.08))
+W4 = tf.Variable(tf.truncated_normal([7*7*L3,L4], stddev=0.08))
 B4 = tf.Variable(tf.zeros([L4]))
-W5 = tf.Variable(tf.truncated_normal([L4, 10], stddev=0.1))
+W5 = tf.Variable(tf.truncated_normal([L4, 10], stddev=0.08))
 B5 = tf.Variable(tf.zeros([10]))
 #tf.summary.scalar('W1',tf.reduce_mean(W1))
 

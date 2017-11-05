@@ -25,5 +25,9 @@ During the inital phase of training the loss function remains , on average, the 
 
 We were unable to replicate the results reported in the Swish paper, beta1 for us did not converge near 1 maybe because we didn't train our model long enough. 
 
+![alt text](https://github.com/Neoanarika/CNN-using-Swish/blob/master/media/he.png)
+
+It seems that He initilisation doesn't really help this problem. 
+
 # Reference 
 1. Searching for Activation Functions https://arxiv.org/abs/1710.05941
