@@ -29,5 +29,9 @@ We were unable to replicate the results reported in the Swish paper, beta1 for u
 
 It seems that He initilisation doesn't really help this problem. 
 
+![alt text](https://github.com/Neoanarika/CNN-using-Swish/blob/master/media/loss_rmsprop.png)
+
+After change from SGD to RMSprop we immediately get better results. 
+
 # Reference 
 1. Searching for Activation Functions https://arxiv.org/abs/1710.05941
