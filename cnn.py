@@ -77,7 +77,8 @@ loss = tf.reduce_mean(
     tf.nn.softmax_cross_entropy_with_logits(logits=Ylogits, labels=y))
 tf.summary.scalar('loss',loss)
 # Step 4: Optimizer
-optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+#optimizer = tf.train.RMSPropOptimizer(learning_rate)
+optimizer = tf.train.AdamOptimizer(learning_rate)
 #optimizer = tf.train.AdamOptimizer()
 grad = optimizer.compute_gradients(loss)
 tf.summary.scalar('beta1',tf.reduce_mean(beta1))
